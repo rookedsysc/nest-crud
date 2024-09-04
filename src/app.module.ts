@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from 'joi';
+import { Board } from './board/board.entity';
+import { BoardModule } from './board/board.module';
 
 @Module({
   imports: [
@@ -28,11 +30,12 @@ import * as Joi from 'joi';
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
-        entities: [],
+        entities: [Board],
         synchronize: true,
       }),
       inject: [ConfigService],
     }),
+    BoardModule,
     // TypeOrmModule.forRoot({
     //   type: process.env.DB_TYPE as 'mysql',
     //   host: process.env.DB_HOST,
