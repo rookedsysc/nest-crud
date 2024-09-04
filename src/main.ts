@@ -10,7 +10,6 @@ async function bootstrap() {
     .setTitle('Board CRUD')
     .setDescription('내 첫 Nest')
     .setVersion('1.0')
-    .addTag('rookedsysc')
     .build();
   const documents = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger-ui', app, documents);
