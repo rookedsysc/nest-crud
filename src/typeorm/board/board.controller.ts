@@ -36,7 +36,7 @@ export class BoardController {
   @Get(':id')
   @ApiOperation({ summary: 'Get board by ID' })
   async getBoardById(@Param('id') id: number): Promise<BoardResp> {
-    return await this.boardService.findBoardById(id);
+    return await this.boardService.findBoardResp(id);
   }
 
   @Patch(':id')

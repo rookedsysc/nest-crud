@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from 'joi';
 import { Board } from './typeorm/board/board.entity';
 import { BoardModule } from './typeorm/board/board.module';
 import { BoardDzModule } from './drizzle/board/board.dz.module';
+import { CommentModule } from './typeorm/comment/comment.module';
+import { Comment } from './typeorm/comment/comment.entity';
 
 @Module({
   imports: [
@@ -31,25 +31,17 @@ import { BoardDzModule } from './drizzle/board/board.dz.module';
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
-        entities: [Board],
+        entities: [Board, Comment],
         synchronize: true,
+        logging: true,
       }),
       inject: [ConfigService],
     }),
     BoardModule,
     BoardDzModule,
-    // TypeOrmModule.forRoot({
-    //   type: process.env.DB_TYPE as 'mysql',
-    //   host: process.env.DB_HOST,
-    //   port: parseInt(process.env.DB_PORT),
-    //   username: process.env.DB_USERNAME,
-    //   password: process.env.DB_PASSWORD,
-    //   database: process.env.DB_DATABASE,
-    //   entities: [],
-    //   synchronize: true,
-    // }),
+    CommentModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
