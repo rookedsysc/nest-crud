@@ -15,7 +15,7 @@ export class Board {
 
   @OneToMany(() => Comment, (comment) => comment.board, {
     cascade: true,
-    eager: true,
+    eager: false,
   })
   comments: Comment[];
 
