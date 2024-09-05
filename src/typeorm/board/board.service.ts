@@ -41,7 +41,7 @@ export class BoardService {
   }
 
   async findBoardResp(id: number): Promise<BoardResp> {
-    const board = await this.findBoard(id);
+    const board = await this.findBoardOrThrow(id);
     const boardResp = new BoardResp();
     boardResp.id = board.id;
     boardResp.title = board.title;
@@ -50,7 +50,7 @@ export class BoardService {
     return boardResp;
   }
 
-  async findBoard(id: number): Promise<Board> {
+  async findBoardOrThrow(id: number): Promise<Board> {
     const board = await this.boardRepository.findOne({ where: { id } });
 
     if (!board) {
