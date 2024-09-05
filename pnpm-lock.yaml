@@ -26,9 +26,12 @@ importers:
       '@nestjs/typeorm':
         specifier: ^10.0.2
         version: 10.0.2(@nestjs/common@10.4.1(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@10.4.1(@nestjs/common@10.4.1(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/platform-express@10.4.1)(reflect-metadata@0.2.2)(rxjs@7.8.1))(reflect-metadata@0.2.2)(rxjs@7.8.1)(typeorm@0.3.20(mysql2@3.11.0)(ts-node@10.9.2(@types/node@20.16.4)(typescript@5.5.4)))
+      '@planetscale/database':
+        specifier: ^1.19.0
+        version: 1.19.0
       drizzle-orm:
         specifier: ^0.33.0
-        version: 0.33.0(mysql2@3.11.0)
+        version: 0.33.0(@planetscale/database@1.19.0)(mysql2@3.11.0)
       joi:
         specifier: ^17.13.3
         version: 17.13.3
@@ -878,6 +881,10 @@ packages:
   '@pkgr/core@0.1.1':
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
+
+  '@planetscale/database@1.19.0':
+    resolution: {integrity: sha512-Tv4jcFUFAFjOWrGSio49H6R2ijALv0ZzVBfJKIdm+kl9X046Fh4LLawrF9OMsglVbK6ukqMJsUCeucGAFTBcMA==}
+    engines: {node: '>=16'}
 
   '@sideway/address@4.1.5':
     resolution: {integrity: sha512-IqO/DUQHUkPeixNQ8n0JA6102hT9CmaljNTPmQ1u8MEhBo/R4Q8eKLN/vGZxuebwOroDB4cbpjheD4+/sKFK4Q==}
@@ -4214,6 +4221,8 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
+  '@planetscale/database@1.19.0': {}
+
   '@sideway/address@4.1.5':
     dependencies:
       '@hapi/hoek': 9.3.0
@@ -4993,8 +5002,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.33.0(mysql2@3.11.0):
+  drizzle-orm@0.33.0(@planetscale/database@1.19.0)(mysql2@3.11.0):
     optionalDependencies:
+      '@planetscale/database': 1.19.0
       mysql2: 3.11.0
 
   eastasianwidth@0.2.0: {}
