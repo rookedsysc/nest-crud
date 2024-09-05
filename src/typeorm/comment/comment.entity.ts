@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -15,6 +16,7 @@ export class Comment {
   @ManyToOne(() => Board, (board) => board.comments, {
     eager: true,
   })
+  // @JoinColumn([{ name: 'board_id', referencedColumnName: 'board_id' }])
   board: Board;
 
   @Column()

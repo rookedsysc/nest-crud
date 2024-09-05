@@ -44,12 +44,8 @@ export class BoardController {
   async updateBoard(
     @Param('id') id: number,
     @Body() boardUpdateReq: BoardUpdateReq,
-  ): Promise<BoardResp> {
-    const updatedBoard = await this.boardService.updateBoard(
-      id,
-      boardUpdateReq,
-    );
-    return updatedBoard;
+  ) {
+    await this.boardService.updateBoard(id, boardUpdateReq);
   }
 
   @Delete(':id')
