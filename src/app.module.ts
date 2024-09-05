@@ -4,8 +4,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from 'joi';
-import { Board } from './board/board.entity';
-import { BoardModule } from './board/board.module';
+import { Board } from './typeorm/board/board.entity';
+import { BoardModule } from './typeorm/board/board.module';
 
 @Module({
   imports: [
