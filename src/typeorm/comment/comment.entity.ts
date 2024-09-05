@@ -13,7 +13,6 @@ export class Comment {
   id: number;
 
   @ManyToOne(() => Board, (board) => board.comments, {
-    cascade: true,
     eager: true,
   })
   board: Board;
