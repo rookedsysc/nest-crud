@@ -40,19 +40,24 @@ export class BoardService {
     return await this.boardRepository.save(board);
   }
 
-  async findBoardById(id: number): Promise<BoardResp> {
-    const board = await this.boardRepository.findOne({ where: { id } });
-
-    if (!board) {
-      throw new NotFoundException(`Board with ID ${id} not found`);
-    }
-
+  async findBoardResp(id: number): Promise<BoardResp> {
+    const board = await this.findBoard(id);
     const boardResp = new BoardResp();
     boardResp.id = board.id;
     boardResp.title = board.title;
     boardResp.content = board.content;
 
     return boardResp;
+  }
+
+  async findBoard(id: number): Promise<Board> {
+    const board = await this.boardRepository.findOne({ where: { id } });
+
+    if (!board) {
+      throw new NotFoundException(`Board with ID ${id} not found`);
+    }
+
+    return board;
   }
 
   async getAllBoards(): Promise<BoardResp[]> {
