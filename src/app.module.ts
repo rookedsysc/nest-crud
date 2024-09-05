@@ -6,6 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from 'joi';
 import { Board } from './typeorm/board/board.entity';
 import { BoardModule } from './typeorm/board/board.module';
+import { BoardDzModule } from './drizzle/board/board.dz.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { BoardModule } from './typeorm/board/board.module';
       inject: [ConfigService],
     }),
     BoardModule,
+    BoardDzModule,
     // TypeOrmModule.forRoot({
     //   type: process.env.DB_TYPE as 'mysql',
     //   host: process.env.DB_HOST,
