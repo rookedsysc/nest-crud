@@ -17,7 +17,7 @@ export class Board {
     cascade: true,
     eager: false,
   })
-  comments: Comment[];
+  comments: Promise<Comment[]>;
 
   @Column()
   title: string;
