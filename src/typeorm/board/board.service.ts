@@ -7,6 +7,7 @@ import { BoardResp } from './dto/board-response.dto';
 import { BoardUpdateReq } from './dto/board-update.dto';
 import { CommentResp } from '../comment/dto/comment-resp.dto';
 import { title } from 'process';
+import { relations } from 'drizzle-orm';
 
 @Injectable()
 export class BoardService {
@@ -75,7 +76,9 @@ export class BoardService {
   }
 
   async getAllBoards(): Promise<BoardResp[]> {
-    const boards = await this.boardRepository.find();
+    const boards = await this.boardRepository.find({
+      relations: ['comments'],
+    });
 
     const futureResponses = boards.map(async (board) => {
       const comments = await board.comments;
